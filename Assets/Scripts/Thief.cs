@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,22 +26,15 @@ public class Thief : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            _animator.SetTrigger("Run");
         if (Input.GetKey(KeyCode.A))
-        {
-            _animator.SetTrigger("Run");
-
             transform.Translate(-_speed * Time.deltaTime, 0, 0);
-        }
         else if (Input.GetKey(KeyCode.D))
-        {
-            _animator.SetTrigger("Run");
-
             transform.Translate(_speed * Time.deltaTime, 0, 0);
-        }
+
         if (transform.position.y > -2.5f && transform.position.y < -2.3 && Input.GetKey(KeyCode.Space))
-        {
             _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
-        }
     }
 
     public void MakeThiefUnderAttack()
