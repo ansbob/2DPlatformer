@@ -10,15 +10,17 @@ public class CameraFollower : MonoBehaviour
     private void Start()
     {
         int numberOfSpawns = 10;
-        int positionX;
+        int positionX, positionY = -3, positionZ = 0;
+        int minPositionX = -3;
+        int maxPositionX = 8;
 
         System.Random rand = new System.Random();
 
         for (int i = 0; i < numberOfSpawns; i++)
         {
-            positionX = rand.Next(-3, 8);
+            positionX = rand.Next(minPositionX, maxPositionX);
 
-            Vector3 point = new Vector3(positionX, -3, 0);
+            Vector3 point = new Vector3(positionX, positionY, positionZ);
 
             Instantiate(_coin, point, Quaternion.identity);
         }
