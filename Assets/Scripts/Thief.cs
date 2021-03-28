@@ -15,6 +15,7 @@ public class Thief : MonoBehaviour
     private Animator _animator;
 
     private float _jumpForce = 1.0F;
+    private float _minDeviationForJump = -2.5f, _maxDeviationForJump = -2.3f;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class Thief : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
             transform.Translate(_speed * Time.deltaTime, 0, 0);
 
-        if (transform.position.y > -2.5f && transform.position.y < -2.3 && Input.GetKey(KeyCode.Space))
+        if (transform.position.y > _minDeviationForJump && transform.position.y < _maxDeviationForJump && Input.GetKey(KeyCode.Space))
             _rigidbody.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
     }
 
